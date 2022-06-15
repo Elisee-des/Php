@@ -1,6 +1,5 @@
 <?php
 
-// $prenom = "Sawadogo";
 
 // function bonjour($nom = null, $prenom = null)
 // {
@@ -79,37 +78,6 @@
 // var_dump($creneau, $creneau2);
 
 
-function repondre_oui_non(string $phrase)
-{
-    while (true) {
-        $reponse = readline($phrase . "o pour oui et n pour non: ");
-
-        if ($reponse === "o") {
-            return true;
-        } elseif ($reponse === "n") {
-            return false;
-        }
-    }
-}
-
-function demande_creneau(string $phrase = "Veuillez entrer un creneau "): array
-{
-    echo $phrase . "\n";
-    while (true) {
-        $ouverture = (int)readline("Heure de ouverture :");
-        if ($ouverture >= 0 && $ouverture <= 23) {
-            break;
-        }
-    }
-
-    while (true) {
-        $fermeture = (int)readline("Heure de fermeture :");
-        if ($fermeture >= 0 && $fermeture <= 23 && $fermeture > $ouverture) {
-            break;
-        }
-    }
-    return [$ouverture, $fermeture];
-}
 
 function demande_creneaux(?string $phrase = null): ?array
 {
@@ -129,3 +97,10 @@ function demande_creneaux(?string $phrase = null): ?array
 $creneaux = demande_creneaux("Entrer vos creneaux:");
 
 var_dump($creneaux);
+
+
+/**
+ *  INCLUDE si on ne veut pas quel bloque la suite du script en cas d'erreur
+ *  REQUIRE si la function est indispensable pour la suite
+ *  REQUIRE_ONCE si on veut l'appeler un seul fois ou plusieur fois
+*/
